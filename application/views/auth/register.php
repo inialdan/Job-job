@@ -44,6 +44,13 @@
 								<input id="register-email" type="email" class="form-control" name="email" value="" placeholder="Alamat Email">                                        
 							</div>
 						
+							<div style="margin-bottom: 15px">
+								<select class="form-control" aria-label="Default select example" name="gender" required="required">
+									<option value="L">Laki-laki</option>
+									<option value="P">Perempuan</option>
+								</select>
+							</div>
+							
 							<div style="margin-bottom: 25px" class="input-group">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 								<input id="register-password" type="password" class="form-control" name="password" placeholder="Password">

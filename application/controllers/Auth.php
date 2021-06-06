@@ -55,6 +55,7 @@
 			$username = $this->input->post("username");
 			$name = $this->input->post("name");
 			$email = $this->input->post("email");
+			$gender = $this->input->post("gender");
 			$password = password_hash($this->input->post("password"), PASSWORD_DEFAULT);
 
 			$pass = $this->input->post("password");
@@ -75,6 +76,7 @@
 						"username" => $username,
 						"name" => $name,
 						"email" => $email,
+						"gender" => $gender,
 						"password" => $password,
 						"avatar" => "default.png"
 					];

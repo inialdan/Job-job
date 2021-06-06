@@ -62,26 +62,11 @@ $route['logout'] = 'auth/logout';
 $route['default_controller'] = 'auth/login';
 
 $route['admin'] = 'application/admin';
-$route['update_application/(:num)'] = 'application/application_update/$1';
+$route['update_application/(:num)'] = 'application/application_admin_update/$1';
 $route['delete_application/(:num)'] = 'application/application_delete/$1';
 
 $route['member'] = 'application/member';
 $route['member_application_create'] = 'application/application_create';
 $route['member_application_create_post'] = 'application/application_create_post';
-
-$route['book'] = 'book/index';
-$route['book_create'] = 'book/create';
-$route['book_create_post']  = 'book/book_create';
-$route['book_update/(:num)'] = 'book/book_update/$1';
-$route['book_update_data'] = 'book/book_update_data';
-$route['book_delete/(:num)'] = 'book/book_delete/$1';
-
-$route['book_category'] = 'bookcategory/index';
-$route['book_category_create'] = 'bookcategory/create';
-$route['book_category_create_post'] = 'bookcategory/book_category_create';
-$route['book_category_update/(:num)'] = 'bookcategory/book_category_update/$1';
-$route['book_category_update_data'] = 'bookcategory/book_category_update_data';
-$route['book_category_delete/(:num)'] = 'bookcategory/book_category_delete/$1';
-
-
-$route['book_list'] = 'booklist/index';
+$route['member_application_update/(:num)'] = 'application/application_member_update/$1';
+$route['member_application_update_post'] = 'application/application_member_update_post';

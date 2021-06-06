@@ -38,7 +38,7 @@
 				"user" => $this->user,
 			];
 			 
-			$this->load->view('application/create', $data);
+			$this->load->view('application/member_create', $data);
 		}
 
 		private function _upload_document(){
@@ -101,7 +101,71 @@
 			}
 		}
 
-		public function application_update($id){
+		private function _update_document($id){
+
+			$data = $this->user = $this->ApplicationModel->findOne("id", $id);
+
+			$config['upload_path']          = './document/';
+			$config['allowed_types']        = 'jpeg|jpg|png|pdf|doc|docx';
+			$config['file_name']            = "doc_" . uniqid();
+			$config['overwrite']			= true;
+			$config['max_size']             = 100000;
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('document')){
+				echo "
+				<script>
+					alert('Terjadi kesalahan upload');
+					document.location.href = '" . base_url() . "member_application_create';
+				</script>";die();
+			}else{
+				if(file_exists("./document/" . $data->document)){
+					unlink("./document/" . $data->document);
+				}
+				
+				return $this->upload->data("file_name");
+			}
+		}
+
+		public function application_member_update($id){
+
+			$data = [
+				"data" => $this->user = $this->ApplicationModel->findOne("id", $id),
+			];
+			 
+			$this->load->view('application/member_edit', $data);
+		}
+
+		public function application_member_update_post(){
+			$user_id = $this->input->post("user_id");
+			$phone = $this->input->post("phone");
+			
+			if (!empty($_FILES["document"]["name"])) {
+				$document = $this->_update_document($user_id);
+			}
+
+			$data = [
+				"phone" => $phone,
+				"document" => $document,
+			];
+			
+			if($this->ApplicationModel->update($data, $user_id) == 1){
+				echo "
+				<script>
+					alert('Lamaran berhasil diupdate');
+					document.location.href = '" . base_url() . "member';
+				</script>";
+			}else {
+				echo "
+				<script>
+					alert('Lamaran gagal diupdate');
+					document.location.href = '" . base_url() . "member';
+				</script>";
+			}
+		}
+
+		public function application_admin_update($id){
 			$data = [
 				"status" => 1,
 			];

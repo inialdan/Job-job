@@ -68,7 +68,7 @@
 								<td><?= $post->phone; ?></td>
 								<td>
 									<?php
-										if($post->gender = "L"){
+										if($post->gender == "L"){
 											echo "Laki-laki";
 										}else{
 											echo "Perempuan";
@@ -90,8 +90,13 @@
 								</td>
 								<td><?= $post->created_on; ?></td>
 								<td class="text-center">
-									<a href="document/<?php echo $post->document; ?>" target="_blank" class="btn btn-primary btn-xs">
+									<a href="<?= base_url() ?>document/<?php echo $post->document; ?>" target="_blank" class="btn btn-primary btn-xs">
 										<span class="glyphicon glyphicon-eye-open"></span> Dokumen
+									</a>
+								</td>
+								<td class="text-center">
+									<a href="<?= base_url() ?>member_application_update/<?php echo $post->id; ?>" class="btn btn-success btn-xs">
+										<span class="glyphicon glyphicon-pencil"></span> Edit
 									</a>
 								</td>
 							</tr>
